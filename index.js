@@ -31,12 +31,12 @@ wss.on("connection", (socket) => {
   socket.on("error", console.error);
 });
 
-console.log("Server running on ws://localhost:8080");
+console.log("Server running on ws://websockets-cmsy.onrender.com:8080");
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-server.listen(3000, () => {
-  console.log("HTTP server running on http://localhost:3000");
+server.listen(process.env.PORT || 3000, () => {
+  console.log("HTTP server running on https://websockets-cmsy.onrender.com");
 });
