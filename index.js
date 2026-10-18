@@ -5,7 +5,7 @@ const express = require("express");
 
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ server });
 
 wss.on("connection", (socket) => {
   console.log("A client connected!");
@@ -31,12 +31,11 @@ wss.on("connection", (socket) => {
   socket.on("error", console.error);
 });
 
-console.log("Server running on wss://websockets-cmsy.onrender.com:8080");
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-server.listen(process.env.PORT || 3000, () => {
-  console.log("HTTP server running on https://websockets-cmsy.onrender.com");
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+  console.log(`HTTP and WebSocket server running on port ${port}`);
 });

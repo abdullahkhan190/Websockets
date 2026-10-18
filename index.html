@@ -15,7 +15,8 @@
 
     </ul>
     <script>
-        const socket = new WebSocket("wss://websockets-cmsy.onrender.com");
+        const socketProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+        const socket = new WebSocket(`${socketProtocol}//${window.location.host}`);
 
         function addMessage(message) {
             const messagesList = document.getElementById("messages");
