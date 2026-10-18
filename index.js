@@ -31,7 +31,7 @@ wss.on("connection", (socket) => {
   socket.on("error", console.error);
 });
 
-console.log("Server running on ws://websockets-cmsy.onrender.com:8080");
+console.log("Server running on wss://websockets-cmsy.onrender.com:8080");
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
